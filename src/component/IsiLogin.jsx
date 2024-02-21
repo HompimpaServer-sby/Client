@@ -31,7 +31,7 @@ const IsiLogin = () => {
         <form onSubmit={submitHandler}>
           <div className="relative my-4 pt-20">
             <input
-              placeholder="Name"
+              placeholder="Username"
               type="userName" 
               name="userName"
               value={loginForm.userName}
