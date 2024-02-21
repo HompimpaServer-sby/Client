@@ -17,16 +17,15 @@ function Login() {
     return (
         <>
                 <a
-                    className="welcome-game text-red-600"
+                    datatype="Welcome To The Game!"
+                    className="welcome-game text-blue-600"
                     style={{
                         fontSize: "65px",
                         textAlign: "center",
                         fontFamily: "Salsa",
                         position: "fixed",
                         top: "10%",
-                        left: "50%",
-                        animation: "slideRight 5s forwards",
-                        whiteSpace: "nowrap",
+                        left: "28%",
                     }}
                 >
                     Welcome To The Game!

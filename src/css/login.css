@@ -1,8 +1,30 @@
-@keyframes slideRight {
-    0% {
-        left: -100%; /* Mulai dari luar layar sebelah kiri */
+.welcome-game {
+    display: inline-block;
+    position: relative;
+    -webkit-text-stroke: 0.1vw #329d52;
+    overflow: hidden; /* Hindari overflow */
+}
+
+.welcome-game::before {
+    content: attr(datatype);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Sesuaikan dengan lebar teks */
+    height: 100%;
+    color: #01fe87;
+    -webkit-text-stroke: 0vw #383d52;
+    border-right: 2px solid #01fe87;
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+    white-space: nowrap; /* Hindari pematahan baris */
+}
+
+@keyframes animate {
+    0%, 10%, 100% {
+        width: 0;
     }
-    100% {
-        left: 0; /* Muncul di posisi semula */
+    70%, 90% {
+        width: 100%; /* Sesuaikan dengan lebar yang lebih besar */
     }
 }
