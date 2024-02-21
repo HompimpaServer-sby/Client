@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "../index.css";
 import IsiRoom from "../component/IsiRoom";
-import "../css/room.css";
+
 
 function Room() {
   const [count, setCount] = useState(0);
@@ -10,7 +10,6 @@ function Room() {
   return (
     <>
       <a
-        className="choose-one"
         style={{
           fontSize: "65px",
           textAlign: "center",
