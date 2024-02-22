@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../index.css";
-import IsiLogin from "../component/IsiLogin";
 import '../css/login.css'
 import { useNavigate } from "react-router-dom"
 import { BiUser } from "react-icons/bi";

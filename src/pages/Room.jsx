@@ -15,9 +15,7 @@ import { changeValue } from "../features/OnlineUsers/onlineUsersSlice";
 
 
 function Room() {
-  const [count, setCount] = useState(0);
-
-  const [player, setPlayer] = useState(0)
+  const [loading, setLoading] = useState(false)
 
     const onlineUsers = useSelector(state => state.onlineUsers.value)
     const dispatch = useDispatch()
@@ -27,6 +25,8 @@ function Room() {
     const handleBackHand = (e) => {
         e.preventDefault()
 
+        setLoading(true)
+
         socket.emit("choose", 1);
         localStorage.hand = 1
     }
@@ -34,14 +34,17 @@ function Room() {
     const handleFrontHand = (e) => {
         e.preventDefault()
 
+        setLoading(true)
+
         socket.emit("choose", 2);
         localStorage.hand = 2
     }
 
     const handleStonePaper = (e) => {
-      console.log(e, "<<EEE");
         const {name} = e.target
-        console.log(name, "<<Name StonePaper");
+
+        setLoading(true)
+        console.log(loading, "<<<Loading");
 
         if(name === "cutter") {
             socket.emit("stone:paper", 3);
@@ -68,8 +71,8 @@ function Room() {
 
 
         socket.on("choose:hand", (num) => {
-            console.log(num, "<<MAXXXX");
-            console.log(localStorage.hand, "<<<Hand");
+            setLoading(false)
+
             if(num == 0) {
                 return navigate("/")
             }
@@ -84,7 +87,7 @@ function Room() {
         });
 
         socket.on("win:rockpaper", (win) => {
-            console.log(win, "<<Win");
+            setLoading(false)
             if(localStorage.stonepaper != win.num) {
                 console.log("lose");
                 navigate("/lose")
@@ -116,6 +119,10 @@ function Room() {
       >
         Choose One
       </a>
+
+      
+      {/* Loading */}
+
 
       <div
         className="text-white flex justify-center items-center bg-cover"
