@@ -4,6 +4,8 @@ import '../css/login.css'
 import { useNavigate } from "react-router-dom"
 import { BiUser } from "react-icons/bi";
 
+import "../css/cssHome.css"
+
 function Login() {
     const [isVisible, setIsVisible] = useState(false);
 
@@ -27,7 +29,7 @@ function Login() {
     }, []);
 
     return (
-        <>
+        <div className="bg-login">
                 <a
                     datatype="Welcome To The Game!"
                     className="welcome-game text-blue-600"
@@ -42,7 +44,7 @@ function Login() {
                 >
                     Welcome To The Game!
                 </a>
-            <div className="text-white flex justify-center items-center bg-cover" style={{ backgroundImage: 'url("../src/assets/bg.jpg")', height: "100vh" }}>
+            <div className="text-white flex justify-center items-center bg-cover" style={{ height: "100vh" }}>
                 {/* Mulai Form */}
 
                 <div className="">
@@ -79,7 +81,7 @@ function Login() {
 
                 {/* End Form */}
             </div>
-        </>
+        </div>
     );
 }
 

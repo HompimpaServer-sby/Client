@@ -14,17 +14,11 @@ export default function Lose() {
           username: localStorage.username
         }
 
-      socket.connect()
-      socket.emit("user:get")
-
-      socket.on("users:online", (users) => {
-          dispatch(changeValue(users))
-      });
+        socket.disconnect()
   
         localStorage.clear()
-        let openedWindow;
-
-        openedWindow.close();
+        
+        navigate("/")
       }
 
     return (

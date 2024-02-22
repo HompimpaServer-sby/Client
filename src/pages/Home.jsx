@@ -2,6 +2,9 @@ import { GiExitDoor } from "react-icons/gi";
 import { BiUser } from "react-icons/bi";
 import { FcOk } from "react-icons/fc";
 
+import bg1 from "../assets/bg1.jpg"
+import "../css/cssHome.css"
+
 import { useEffect, useState } from "react";
 import socket from "../instances/socket";
 import { useNavigate } from "react-router-dom";
@@ -40,19 +43,16 @@ export default function Home() {
     const handleExit = (e) => {
       e.preventDefault()
       
-      socket.emit("user:get")
-
-        socket.on("users:online", (users) => {
-            dispatch(changeValue(users))
-        });
+      socket.disconnect()
 
       localStorage.clear()
 
-      window.close()
+      navigate("/login")
     }
 
   return (
-    <>
+    <div className="bg-home">
+    
       <button
         type="submit"
         style={{ fontFamily: "Bungee Spice", position: "fixed" }}
@@ -66,7 +66,6 @@ export default function Home() {
       <div
         className="text-white flex justify-center items-center bg-cover"
         style={{
-          backgroundImage: 'url("../src/assets/bg1.jpg")',
           height: "100vh",
         }}
       >
@@ -129,6 +128,6 @@ export default function Home() {
 
         {/* End Home */}
       </div>
-    </>
+    </div>
   );
 }
