@@ -11,7 +11,6 @@ import { changeValue } from "../features/OnlineUsers/onlineUsersSlice";
 export default function Home() {
 
     const onlineUsers = useSelector(state => state.onlineUsers.value)
-    console.log(onlineUsers, "<<Online User Redux");
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -21,7 +20,6 @@ export default function Home() {
     }
 
     useEffect(() => {
-        console.log("Jalan Di Dashboar");
         socket.auth = {
             username: localStorage.username
         }
@@ -41,7 +39,7 @@ export default function Home() {
 
     const handleExit = (e) => {
       e.preventDefault()
-
+      
       socket.emit("user:get")
 
         socket.on("users:online", (users) => {

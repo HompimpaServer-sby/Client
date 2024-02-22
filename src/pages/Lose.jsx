@@ -1,12 +1,30 @@
 import { useNavigate } from "react-router-dom"
+import socket from "../instances/socket";
+import { useSelector, useDispatch } from "react-redux";
+import { changeValue } from "../features/OnlineUsers/onlineUsersSlice";
 
 export default function Lose() {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
+
     const handleExit = (e) => {
         e.preventDefault()
+
+        socket.auth = {
+          username: localStorage.username
+        }
+
+      socket.connect()
+      socket.emit("user:get")
+
+      socket.on("users:online", (users) => {
+          dispatch(changeValue(users))
+      });
   
         localStorage.clear()
-        navigate("/login")
+        let openedWindow;
+
+        openedWindow.close();
       }
 
     return (
