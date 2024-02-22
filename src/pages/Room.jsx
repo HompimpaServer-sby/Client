@@ -7,6 +7,8 @@ import { FaRegHandPaper } from "react-icons/fa";
 import { FaRegHandRock } from "react-icons/fa"; //Batu
 import { FaRegHandPeace } from "react-icons/fa"; //Gunting
 
+import "../css/cssHome.css"
+
 import { useEffect, useState } from "react";
 import socket from "../instances/socket";
 import { useNavigate } from "react-router-dom";
@@ -88,6 +90,13 @@ function Room() {
 
     socket.on("win:rockpaper", (win) => {
       setLoading(false)
+
+      if (win == 0) {
+        console.log(win, "<<Draw");
+        return navigate("/")
+      }
+
+      
       if (localStorage.stonepaper != win.num) {
         console.log("lose");
         navigate("/lose")
@@ -105,7 +114,7 @@ function Room() {
   }, [])
 
   return (
-    <>
+    <div className="bg-room">
       <a
         style={{
           fontSize: "65px",
@@ -133,7 +142,6 @@ function Room() {
       <div
         className="text-white flex justify-center items-center bg-cover"
         style={{
-          backgroundImage: 'url("../src/assets/bg3.jpg")',
           height: "100vh",
         }}
       >
@@ -192,7 +200,7 @@ function Room() {
 
         {/* End Room */}
       </div>
-    </>
+    </div>
   );
 }
 
