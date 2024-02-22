@@ -110,6 +110,7 @@ function Room() {
     return () => {
       socket.off("choose:hand")
       socket.off("win:rockpaper")
+      socket.off("users:online")
     }
   }, [])
 
