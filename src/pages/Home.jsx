@@ -25,7 +25,7 @@ export default function Home() {
         }
 
         socket.connect()
-        socket.emit("user:get")
+        socket.emit("user:get", localStorage.roomId)
 
         socket.on("users:online", (users) => {
             dispatch(changeValue(users))
@@ -40,15 +40,16 @@ export default function Home() {
     const handleExit = (e) => {
       e.preventDefault()
       
-      socket.emit("user:get")
+      // socket.emit("user:get")
 
         socket.on("users:online", (users) => {
             dispatch(changeValue(users))
         });
 
       localStorage.clear()
+      socket.disconnect()
+      navigate('/login')
 
-      window.close()
     }
 
   return (
